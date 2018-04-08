@@ -1,7 +1,6 @@
 var webpack = require('webpack');
-var path = require('path');
-var ExtractTextPlugin = require('extract-text-webpack-plugin'); 
-var OpenBrowserPlugin = require('open-browser-webpack-plugin'); 
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
@@ -11,11 +10,10 @@ module.exports = {
         hot: true,
         inline: true,
         progress: true,
-        contentBase: "./app",
-        publicPath: "/assets/",
+        contentBase: './app',
         port: 8080
     },
-    devtool:"cheap-module-eval-source-map",
+    devtool:'cheap-module-eval-source-map',
     entry: {
         pages: __dirname +'/app/src/router.js',
         vendors:['react','react-dom','react-router']
@@ -30,9 +28,9 @@ module.exports = {
                 test: /\.scss$/,
                 exclude: /node_modules/,
                 use: [
-                    {loader: "style-loader" },// creates style nodes from JS strings
-                    {loader: "css-loader" }, // translates CSS into CommonJS
-                    {loader: "sass-loader"} // compiles Sass to CSS
+                    {loader: 'style-loader' },// creates style nodes from JS strings
+                    {loader: 'css-loader' }, // translates CSS into CommonJS
+                    {loader: 'sass-loader'} // compiles Sass to CSS
                 ]
             },
             { test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader', query: {
@@ -40,15 +38,7 @@ module.exports = {
             } },
             {
                 test: /favicon\.ico$/,
-                use: [
-                    {
-                        loader: 'file-loader?name=favicon.ico',
-                        options: {
-                            publicPath: '/assets/',
-                            name: 'favicon.ico'
-                        }
-                    }
-                ]
+                loader: 'file-loader?name=favicon.ico'
             },
             { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=/img/[name].[ext]' },
             { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
@@ -59,7 +49,7 @@ module.exports = {
     },
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({name: 'vendors', filename: 'js/vendors.js'}),
-        new ExtractTextPlugin("css/bundle.css"),
+        new ExtractTextPlugin('css/bundle.css'),
         new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({ url: 'http://localhost:8080/' }),
         new HtmlWebpackPlugin({favicon: 'public/favicon.ico'})

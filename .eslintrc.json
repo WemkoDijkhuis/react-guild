@@ -1,0 +1,33 @@
+{
+    "plugins": [
+        "react"
+    ],
+    "parserOptions": {
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "env": {
+        "es6":     true,
+        "browser": true,
+        "node":    true,
+        "mocha":   true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "rules": {
+        "no-trailing-spaces": 2,
+        "keyword-spacing":    2,
+        "comma-dangle":       [ 2, "never" ],
+        "quotes":             [ 2, "single" ],
+        "semi":               [ 2, "always" ],
+        "no-unused-vars":     2,
+        "no-extra-semi":      1,
+        "no-unreachable":     1,
+        "no-unused-expressions": 1
+    }
+}
