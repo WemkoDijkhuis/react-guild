@@ -9,7 +9,7 @@ import Init from './main';
 ReactDOM.render(
   <Router history={browserHistory} >
     <Route path="/" component={Init} >
-        <IndexRoute component={GroceryListPage} />
+      <IndexRoute component={GroceryListPage} />
     </Route>
   </Router>
   , document.querySelector('#init')
