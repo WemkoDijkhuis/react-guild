@@ -38,6 +38,16 @@ class GroceryListPage extends React.Component {
     });
   }
 
+  handleRemove(i) {
+    return () => {
+      const { groceries } = this.state;
+
+      this.setState({
+        groceries: groceries.filter((grocery, index) => index !== i)
+      });
+    };
+  }
+
   render() {
     const { title } = this.props;
     const { groceries,inputAmount, inputName } = this.state;
@@ -47,7 +57,9 @@ class GroceryListPage extends React.Component {
         <h2>{title}</h2>
         <ul>
           {groceries.map((grocery, index) => (
-            <li key={index}>{grocery.name} {grocery.amount}</li>
+            <li key={index}>
+              {grocery.name} {grocery.amount} <button onClick={this.handleRemove(index)}>X</button>
+            </li>
           ))}
         </ul>
         <input name="name" placeholder="name" value={inputName} onChange={this.handleChangeName} />
