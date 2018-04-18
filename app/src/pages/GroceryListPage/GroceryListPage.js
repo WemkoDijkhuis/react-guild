@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GroceryListPage extends React.Component {
   render() {
@@ -9,5 +10,21 @@ class GroceryListPage extends React.Component {
     );
   }
 }
+
+GroceryListPage.propTypes = {
+  groceries: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    amount: PropTypes.number
+  }))
+};
+
+GroceryListPage.defaultProps = {
+  groceries: [
+    {name: 'Cucumber', amount: 1},
+    {name: 'Apples', amount: 3},
+    {name: 'Milk', amount: 3},
+    {name: 'Cheese', amount: 7}
+  ]
+};
 
 export default GroceryListPage;
