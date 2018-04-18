@@ -12,6 +12,7 @@ class GroceryListPage extends React.Component {
 }
 
 GroceryListPage.propTypes = {
+  title: PropTypes.string.isRequired,
   groceries: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     amount: PropTypes.number
