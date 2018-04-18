@@ -1,9 +1,6 @@
 import React from 'react';
 import pt from 'prop-types';
 
-require('es5-shim');
-require('console-polyfill');
-
 import '../../public/favicon.ico';
 import './main.scss';
 
