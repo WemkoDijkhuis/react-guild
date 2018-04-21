@@ -26,9 +26,14 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          {loader: 'style-loader' },// creates style nodes from JS strings
-          {loader: 'css-loader' }, // translates CSS into CommonJS
-          {loader: 'sass-loader'} // compiles Sass to CSS
+          {loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            }},
+          {loader: 'sass-loader'}
         ]
       },
       { test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader', query: {
