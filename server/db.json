@@ -1,0 +1,34 @@
+{
+  "groceries": [
+    {
+      "name": "Kaas",
+      "amount": 1,
+      "extension": "stuk"
+    },
+    {
+      "name": "Ham",
+      "amount": 200,
+      "extension": "gram"
+    },
+    {
+      "name": "Brood",
+      "amount": 1,
+      "extension": "hele"
+    },
+    {
+      "name": "Melk",
+      "amount": 1,
+      "extension": "liter"
+    },
+    {
+      "name": "Wasmiddel",
+      "amount": 1,
+      "extension": "fles"
+    },
+    {
+      "name": "Worst",
+      "amount": 1,
+      "extension": "hele"
+    }
+  ]
+}
