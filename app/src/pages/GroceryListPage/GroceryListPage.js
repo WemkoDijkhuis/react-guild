@@ -1,18 +1,19 @@
+/*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './GroceryListPage.scss';
 import RaisedButton from 'material-ui/RaisedButton';
 import Card from 'material-ui/Card';
 import ContentRemove from 'material-ui/svg-icons/content/remove-circle';
 
+import styles from './GroceryListPage.scss';
 
 class GroceryListPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      groceries: props.groceries,
+      groceries: [],
       inputName: '',
       inputAmount: ''
     };
@@ -20,6 +21,22 @@ class GroceryListPage extends React.Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAmount = this.handleChangeAmount.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    fetch('http://127.0.0.1:3000/groceries')
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json();
+        } else {
+          console.warn(`Something failed ${response.status}`);
+        }
+      })
+      .then((data) => {
+        this.setState({
+          groceries: data
+        });
+      });
   }
 
   handleChangeName(e) {
@@ -65,12 +82,10 @@ class GroceryListPage extends React.Component {
           <ul className={styles.list}>
             {groceries.map((grocery, index) => (
               <li key={index}>
-                {grocery.name} {grocery.amount}
+                {grocery.name} {grocery.amount} {grocery.extension}
                 <span className={styles.remove}>
                   <ContentRemove
-                    style={{
-                      color: '#F44336'
-                    }}
+                    style={{color: '#F44336'}}
                     onClick={this.handleRemove(index)}/>
                 </span>
               </li>
@@ -96,13 +111,7 @@ GroceryListPage.propTypes = {
 };
 
 GroceryListPage.defaultProps = {
-  title: 'Grocery List',
-  groceries: [
-    {name: 'Cucumber', amount: 1},
-    {name: 'Apples', amount: 3},
-    {name: 'Milk', amount: 3},
-    {name: 'Cheese', amount: 7}
-  ]
+  title: 'Grocery List'
 };
 
 export default GroceryListPage;
