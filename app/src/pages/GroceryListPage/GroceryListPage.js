@@ -20,6 +20,7 @@ GroceryListPage.propTypes = {
 };
 
 GroceryListPage.defaultProps = {
+  title: 'Grocery List',
   groceries: [
     {name: 'Cucumber', amount: 1},
     {name: 'Apples', amount: 3},
