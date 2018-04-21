@@ -6,7 +6,8 @@
   "description": "learning seed for react",
   "main": "app/src/main.js",
   "scripts": {
-    "start": "webpack-dev-server --progress --hot --colors"
+    "start": "webpack-dev-server --progress --hot --colors",
+    "server": "json-server --watch ./server/db.json"
   },
   "dependencies": {
     "babel-runtime": "6.20.0",
@@ -27,13 +28,14 @@
     "css-loader": "0.23.1",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-import": "^2.10.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "0.9.0",
     "html-webpack-plugin": "3.2.0",
+    "json-server": "^0.12.1",
     "node-sass": "4.8.3",
     "open-browser-webpack-plugin": "0.0.3",
     "prop-types": "^15.6.1",
