@@ -5,15 +5,26 @@
   align-items: center;
 }
 
+.card {
+  padding: 16px;
+}
+
 .title {
   color: #394cf9;
   font-size: 30px;
   font-family: serif;
 }
 
+.remove {
+  cursor: pointer;
+}
+
 .list {
   list-style-type: none;
   -webkit-padding-start: 0;
+
+  max-height: 60vh;
+  overflow: auto;
 
   li {
     display: flex;
@@ -38,19 +49,7 @@
     margin-top: 8px;
   }
 
-  button {
-    background-color: #4CAF50;
-    border: 0;
-    box-shadow: 5px 5px 5px #aaaaaa;
-
-    cursor: pointer;
-
-    height: 40px;
-    margin-top: 8px;
-
-    &:active {
-      background-color: #5dbF60;
-      color: white;
-    }
+  .submitButton {
+    margin-top: 8px !important;
   }
 }

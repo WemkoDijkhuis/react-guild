@@ -3,6 +3,7 @@ import pt from 'prop-types';
 
 import '../../public/favicon.ico';
 import './main.scss';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class Init extends React.Component {
   constructor (props) {
@@ -12,7 +13,9 @@ class Init extends React.Component {
   render () {
     return (
       <div id="app">
-        {this.props.children}
+        <MuiThemeProvider>
+          {this.props.children}
+        </MuiThemeProvider>
       </div>
     );
   }
