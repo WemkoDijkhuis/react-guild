@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './GroceryListPage.scss';
+
 class GroceryListPage extends React.Component {
   constructor(props) {
     super(props);
@@ -53,18 +55,20 @@ class GroceryListPage extends React.Component {
     const { groceries,inputAmount, inputName } = this.state;
 
     return (
-      <div>
-        <h2>{title}</h2>
-        <ul>
+      <div className={styles.container}>
+        <div className={styles.title}>{title}</div>
+        <ul className={styles.list}>
           {groceries.map((grocery, index) => (
             <li key={index}>
               {grocery.name} {grocery.amount} <button onClick={this.handleRemove(index)}>X</button>
             </li>
           ))}
         </ul>
-        <input name="name" placeholder="name" value={inputName} onChange={this.handleChangeName} />
-        <input name="amount" type="number" value={inputAmount} placeholder="amount" onChange={this.handleChangeAmount} />
-        <button onClick={this.handleSubmit}>Submit</button>
+        <div className={styles.buttons}>
+          <input name="name" placeholder="name" value={inputName} onChange={this.handleChangeName} />
+          <input name="amount" type="number" value={inputAmount} placeholder="amount" onChange={this.handleChangeAmount} />
+          <button onClick={this.handleSubmit}>Submit</button>
+        </div>
       </div>
     );
   }

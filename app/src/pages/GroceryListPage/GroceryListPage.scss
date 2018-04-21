@@ -4,3 +4,51 @@
   flex-direction: column;
   align-items: center;
 }
+
+.title {
+  color: #394cf9;
+  font-size: 30px;
+}
+.list {
+  list-style-type: none;
+  -webkit-padding-start: 0;
+
+  li {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: space-between;
+  }
+
+  button {
+    margin-left: 8px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+
+  input {
+    padding: 4px 8px;
+  }
+
+  input:nth-child(2) {
+    margin-top: 8px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    border: 0;
+    box-shadow: 5px 5px 5px #aaaaaa;
+
+    cursor: pointer;
+
+    height: 40px;
+    margin-top: 8px;
+
+    &:active {
+      background-color: #5dbF60;
+      color: white;
+    }
+  }
+}
