@@ -10,7 +10,7 @@ export const saveLists = (payload) => ({
 const groceriesReducer = (state, action) => {
   switch (action.type) {
   case actionTypes.SAVE_LISTS: {
-    return { lists: action.payload.lists };
+    return { ...state, lists: action.payload.lists };
   }
   default:
     return state;
