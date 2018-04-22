@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import {browserHistory, IndexRoute, Route, Router} from 'react-router';
 import groceriesReducer from './reducers/groceries-reducer';
 
+import SelectListPage from './pages/SelectListPage/SelectListPage';
 import GroceryListPage from './pages/GroceryListPage/GroceryListPage';
 
 import Init from './main';
@@ -15,7 +16,8 @@ ReactDOM.render(
   <Provider store={initialStore}>
     <Router history={browserHistory} >
       <Route path="/" component={Init} >
-        <IndexRoute component={GroceryListPage} />
+        <IndexRoute component={SelectListPage} />
+        <Route component={GroceryListPage} path="groceries" />
       </Route>
     </Router>
   </Provider>
