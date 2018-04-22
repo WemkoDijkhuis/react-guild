@@ -24,7 +24,7 @@ class GroceryListPage extends React.Component {
   }
 
   componentWillMount() {
-    fetch('http://127.0.0.1:3000/groceries')
+    fetch('http://127.0.0.1:3000/lists/1')
       .then((response) => {
         if (response.status === 200) {
           return response.json();
@@ -34,7 +34,7 @@ class GroceryListPage extends React.Component {
       })
       .then((data) => {
         this.setState({
-          groceries: data
+          groceries: data.groceries
         });
       });
   }
