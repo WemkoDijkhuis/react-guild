@@ -11,11 +11,11 @@ class SelectListPage extends Component {
   }
 
   handleClick(e) {
-    const { selectList, history } = this.props;
-    const { target: { value }} = e;
+    const { selectList, router } = this.props;
+    const { target: { name }} = e;
 
-    selectList(value);
-    history.push('groceries');
+    selectList(name);
+    router.push('groceries');
   }
 
   componentWillMount() {
@@ -32,7 +32,15 @@ class SelectListPage extends Component {
 
     return (
       <div>
-        {lists.map(list => (<button key={list.id} onClick={this.handleClick}>{list.id}</button>))}
+        {lists.map(list => (
+          <button
+            name={list.id}
+            key={list.id}
+            onClick={this.handleClick}
+          >
+            {list.id}
+          </button>
+        ))}
       </div>
     );
   }
@@ -47,7 +55,7 @@ SelectListPage.propTypes = {
       extension: pt.string
     }))
   })),
-  history: pt.shape({
+  router: pt.shape({
     push: pt.func
   }),
   saveLists: pt.func,

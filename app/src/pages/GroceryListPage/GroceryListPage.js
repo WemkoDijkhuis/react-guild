@@ -23,6 +23,11 @@ class GroceryListPage extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillMount() {
+    const { groceries, router } = this.props;
+    if (!groceries) router.push('/');
+  }
+
   handleChangeName(e) {
     this.setState({
       inputName: e.target.value
@@ -59,6 +64,8 @@ class GroceryListPage extends React.Component {
     const { title, groceries } = this.props;
     const { inputAmount, inputName } = this.state;
 
+    if (!groceries) return null;
+
     return (
       <div className={styles.container}>
         <Card className={styles.card}>
@@ -91,7 +98,10 @@ GroceryListPage.propTypes = {
   groceries: PropTypes.arrayOf(PropTypes.shape({
     name: PropTypes.string,
     amount: PropTypes.number
-  }))
+  })),
+  router: PropTypes.shape({
+    push: PropTypes.func
+  })
 };
 
 GroceryListPage.defaultProps = {

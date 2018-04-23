@@ -19,7 +19,12 @@ const groceriesReducer = (state, action) => {
     return { ...state, lists: action.payload.lists };
   }
   case actionTypes.SELECT_LIST: {
-    return { ...state, groceries: state.lists.find(list => list.id === action.payload.id) };
+    return {
+      ...state,
+      groceries: state.lists
+        .find(list => list.id.toString() === action.payload.id)
+        .groceries
+    };
   }
   default:
     return state;
