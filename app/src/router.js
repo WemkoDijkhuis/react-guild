@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 import {browserHistory, IndexRoute, Route, Router} from 'react-router';
+import groceriesReducer from './reducers/groceries-reducer';
 
 import GroceryListPage from './pages/GroceryListPage/GroceryListPage';
 
 import Init from './main';
 
+const initialStore = createStore(groceriesReducer, ['Use Redux']);
+
 ReactDOM.render(
-  <Router history={browserHistory} >
-    <Route path="/" component={Init} >
-      <IndexRoute component={GroceryListPage} />
-    </Route>
-  </Router>
+  <Provider store={initialStore}>
+    <Router history={browserHistory} >
+      <Route path="/" component={Init} >
+        <IndexRoute component={GroceryListPage} />
+      </Route>
+    </Router>
+  </Provider>
   , document.querySelector('#init')
 );
