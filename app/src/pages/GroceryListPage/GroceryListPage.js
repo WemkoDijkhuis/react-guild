@@ -1,6 +1,7 @@
 /*eslint no-console: ["error", { allow: ["warn", "error"] }] */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Card from 'material-ui/Card';
@@ -13,7 +14,6 @@ class GroceryListPage extends React.Component {
     super(props);
 
     this.state = {
-      groceries: [],
       inputName: '',
       inputAmount: ''
     };
@@ -21,22 +21,6 @@ class GroceryListPage extends React.Component {
     this.handleChangeName = this.handleChangeName.bind(this);
     this.handleChangeAmount = this.handleChangeAmount.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
-    fetch('http://127.0.0.1:3000/lists/1')
-      .then((response) => {
-        if (response.status === 200) {
-          return response.json();
-        } else {
-          console.warn(`Something failed ${response.status}`);
-        }
-      })
-      .then((data) => {
-        this.setState({
-          groceries: data.groceries
-        });
-      });
   }
 
   handleChangeName(e) {
@@ -72,8 +56,8 @@ class GroceryListPage extends React.Component {
   }
 
   render() {
-    const { title } = this.props;
-    const { groceries,inputAmount, inputName } = this.state;
+    const { title, groceries } = this.props;
+    const { inputAmount, inputName } = this.state;
 
     return (
       <div className={styles.container}>
@@ -114,4 +98,8 @@ GroceryListPage.defaultProps = {
   title: 'Grocery List'
 };
 
-export default GroceryListPage;
+const mapStateToProps = (state) => ({
+  groceries: state.groceries
+});
+
+export default connect(mapStateToProps)(GroceryListPage);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import pt from 'prop-types';
 import { connect } from 'react-redux';
-import { saveLists } from '../../reducers/groceries-reducer';
+import { saveLists, selectList } from '../../reducers/groceries-reducer';
 
 class SelectListPage extends Component {
   constructor(props){
@@ -10,8 +10,12 @@ class SelectListPage extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    {/* for next assignment */}
+  handleClick(e) {
+    const { selectList, history } = this.props;
+    const { target: { value }} = e;
+
+    selectList(value);
+    history.push('groceries');
   }
 
   componentWillMount() {
@@ -24,12 +28,11 @@ class SelectListPage extends Component {
 
   render() {
     const { lists } = this.props;
-
     if (!lists) return null;
 
     return (
       <div>
-        {lists.map(list => (<button key={list.id}>{list.id}</button>))}
+        {lists.map(list => (<button key={list.id} onClick={this.handleClick}>{list.id}</button>))}
       </div>
     );
   }
@@ -44,7 +47,11 @@ SelectListPage.propTypes = {
       extension: pt.string
     }))
   })),
-  saveLists: pt.func
+  history: pt.shape({
+    push: pt.func
+  }),
+  saveLists: pt.func,
+  selectList: pt.func
 };
 
 const mapStateToProps = (state) => ({
@@ -52,7 +59,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  saveLists: (lists) => dispatch(saveLists({ lists }))
+  saveLists: (lists) => dispatch(saveLists({ lists })),
+  selectList: (id) => dispatch(selectList({ id }))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SelectListPage);
