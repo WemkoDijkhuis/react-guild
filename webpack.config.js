@@ -26,20 +26,24 @@ module.exports = {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: [
-          {loader: 'style-loader' },// creates style nodes from JS strings
-          {loader: 'css-loader' }, // translates CSS into CommonJS
-          {loader: 'sass-loader'} // compiles Sass to CSS
+          {loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[name]__[local]--[hash:base64:5]'
+            }},
+          {loader: 'sass-loader'}
         ]
       },
       { test: /\.js[x]?$/, exclude: /node_modules/, loader: 'babel-loader', query: {
-        presets: ['es2015', 'react']
+        presets: ['es2015', 'react', 'stage-2']
       } },
       {
         test: /favicon\.ico$/,
         loader: 'file-loader?name=favicon.ico'
       },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=/img/[name].[ext]' },
-      { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=/img/[name].[ext]' }
     ]
   },
   resolve: {
