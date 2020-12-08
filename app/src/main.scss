@@ -1,5 +1,11 @@
+@font-face {
+  font-family: SpringTime;
+  src: url(../../public/springtime-sunshine.ttf);
+}
+
 :global {
   #app {
-
+    font-family: sans-serif;
+    line-height: 1.5;
   }
 }

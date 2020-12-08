@@ -43,7 +43,8 @@ module.exports = {
         test: /favicon\.ico$/,
         loader: 'file-loader?name=favicon.ico'
       },
-      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=/img/[name].[ext]' }
+      { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192&name=/img/[name].[ext]' },
+      { test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/, loader: 'url-loader' }
     ]
   },
   resolve: {
